@@ -18,7 +18,6 @@ namespace Session_03
         public Institute() { 
             ID = Guid.NewGuid();
 
-
         }
 
         public void SetName(string name)
