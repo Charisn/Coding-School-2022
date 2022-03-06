@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace Session_04
 {
     public class Askhsh1
-    {
+    {   
+        public Askhsh1() { }
         public static string ReversedName(string name)
         {
 

@@ -25,3 +25,4 @@ PrimeNumbers.PrintPrime(args);
 //***************************************************************************************
 //4
 
+Multiply.MultiplicationArray();

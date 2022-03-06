@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Session_04
+namespace Session_04 // verbose session
 {
     class PrimeNumbers
     {
-
+        public PrimeNumbers() { }
         //function to check if a given number is prime
         static bool isPrime(int n)
         {
@@ -25,17 +25,17 @@ namespace Session_04
             return true;
         }
 
-        // Driver code
         public static void PrintPrime(String[] args)
         {
             int number;
             Console.WriteLine("Give me a Number and i will give you back all prime numbers to your number.");
             number = Convert.ToInt32(Console.ReadLine());
-            //check for every number from 1 to N
+
+            //check for every number from 1 to number
             for (int i = 1; i <= number; i++)
             {
                 //check if current number is prime
-                if (isPrime(i))
+                if ( isPrime(i) )
                 {
                     Console.Write(i + " ");
                 }

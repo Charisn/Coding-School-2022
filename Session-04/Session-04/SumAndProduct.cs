@@ -8,6 +8,7 @@ namespace Session_04
 {
     public class SumAndProduct
     {
+        public SumAndProduct() { }
         
         public int GetProduct(int n)
         {
@@ -24,12 +25,6 @@ namespace Session_04
             return sum;
 
         }
-
-        public SumAndProduct()
-        {
-
-        }
-
 
     }
 }
