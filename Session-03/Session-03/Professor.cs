@@ -20,7 +20,6 @@ namespace Session_03
         {
             return "Dr." + Name;
         }
-
             // constructor
             internal Professors() { }
 
