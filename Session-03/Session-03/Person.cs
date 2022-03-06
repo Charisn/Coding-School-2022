@@ -8,11 +8,13 @@ namespace Session_03
 {
 
     public class Person
-    {    // property
+
+    {    // properties
         internal Guid ID { get; }
         public string Name { get; set; }
         public int Age { get; set; }
         public string GetName(){return Name;}
+
         // constructor
         public Person(){}
 

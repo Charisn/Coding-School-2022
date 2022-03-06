@@ -8,8 +8,10 @@ namespace Session_03
 {
 
 
-    internal class Institute{
+    internal class Institute
+    {
 
+        // properties
         public Guid ID { get; set; }
         public string Name { get; set; }
         public int YearsInService { get; set; }
@@ -20,6 +22,7 @@ namespace Session_03
 
         }
 
+        // method
         public void SetName(string name)
         {
             Name = name;

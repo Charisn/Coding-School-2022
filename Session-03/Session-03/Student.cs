@@ -8,15 +8,19 @@ namespace Session_03
 {
     internal class Student: Person{
 
+        //properties
         public int RegistrationNumber { get; set; }
         public Course[] Courses { get; set; }
 
+        // constructor
+        public Student() { }
+
+        //methods
         public void Attend(Course courses, DateTime dateTime) { }
         public void WriteExam(Course courses, DateTime dateTime) { }
 
 
-        // constructor
-        public Student() { }
+       
 
 
     }

@@ -8,6 +8,7 @@ namespace Session_03
 {
     internal class University : Institute
     {
+        //properties
         public Student[] Students { get; set; }
 
         public Course[] Courses { get; set; }
@@ -22,20 +23,19 @@ namespace Session_03
 
         public Grade[] GetGrades() { return Grades; }
 
-        public void GetSchedule(
-            Guid ProfessorID,
-            DateTime dateTime,
-            Guid CourseID
-        ) {}
-
         // constructor
         public University()
         {
             Courses = new Course[20];
             Students = new Student[30];
             ScheduledCourses = new Schedule[60];
-            
-
         }
+        // method
+        public void GetSchedule(
+            Guid ProfessorID,
+            DateTime dateTime,
+            Guid CourseID
+        ) {}
+
     }
 }

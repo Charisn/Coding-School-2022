@@ -8,6 +8,7 @@ namespace Session_03
 {
     internal class Grade
     {
+        // properties
        public Guid ID { get; set; }
        public Guid StudentID { get; set; }
        public Guid CourseID { get; set; }

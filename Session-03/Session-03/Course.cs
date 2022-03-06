@@ -8,6 +8,7 @@ namespace Session_03
 {
     internal class Course
     {
+        //properties
         public Guid ID { get; set; }
 
         public string Code { get; set; }

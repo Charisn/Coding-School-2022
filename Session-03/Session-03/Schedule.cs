@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace Session_03
 {
     internal class Schedule
-    {
+    {   
+        //properties
         public Guid ID { get; set; }
         public Guid StudentID { get; set; } 
         public Guid ProfessorID { get; set; }
