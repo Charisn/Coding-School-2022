@@ -46,9 +46,14 @@ namespace Session_05
         {
             Logger = logger;
         }
-        private ActionEnum
+        //private Enumerators(ActionEnum action)
+        //{
+        //    try
+        //    {a
+               
+        //    }
+        //}
 
     }
 }
 
-}
