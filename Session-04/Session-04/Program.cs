@@ -26,3 +26,8 @@ PrimeNumbers.PrintPrime(args);
 //4
 
 Multiply.MultiplicationArray();
+
+//***************************************************************************************
+//5
+
+Sorting.Sort();

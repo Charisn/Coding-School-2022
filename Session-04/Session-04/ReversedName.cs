@@ -22,6 +22,5 @@ namespace Session_04
             }
             return reversedName;
         }
-
     }
 }

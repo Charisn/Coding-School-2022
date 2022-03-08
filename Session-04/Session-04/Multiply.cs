@@ -24,13 +24,11 @@ namespace Session_04
                     {
                         Array[i] = Array1[j] * Array2[k];
 
-                        i++; 
+                        i++;
                     }
                 }
             }
-
-            Console.WriteLine(Array);
+        Console.WriteLine();
         }
-
     }
 }
