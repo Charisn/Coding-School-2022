@@ -1,4 +1,4 @@
-namespace Session_06
+﻿namespace Session_06
 {
     public partial class Form1 : Form
     {
@@ -39,10 +39,24 @@ namespace Session_06
             switch (operand)
 
             {
-                case "+": textResult.Text = (result + Double.Parse(textResult.Text)).ToString(); break;
-                case "-": textResult.Text = (result - Double.Parse(textResult.Text)).ToString(); break;
-                case "/": textResult.Text = (result / Double.Parse(textResult.Text)).ToString(); break;
-                case "*": textResult.Text = (result * Double.Parse(textResult.Text)).ToString(); break;
+                case "+": 
+                    textResult.Text = (result + Double.Parse(textResult.Text)).ToString(); 
+                    break;
+                case "-": 
+                    textResult.Text = (result - Double.Parse(textResult.Text)).ToString(); 
+                    break;
+                case "/": 
+                    textResult.Text = (result / Double.Parse(textResult.Text)).ToString(); 
+                    break;
+                case "*": 
+                    textResult.Text = (result * Double.Parse(textResult.Text)).ToString(); 
+                    break;
+                case "nⁿ":
+                    textResult.Text = Math.Pow(result, Double.Parse(textResult.Text)).ToString();
+                    break;
+                case "√":
+                    textResult.Text = Math.Sqrt(Double.Parse(textResult.Text)).ToString();
+                    break;
                 default: break;
             }
 
@@ -66,10 +80,24 @@ namespace Session_06
             operandPerformed = true;
             switch (operand)
             {
-                case "+": textResult.Text = (result + Double.Parse(textResult.Text)).ToString(); break;
-                case "-": textResult.Text = (result - Double.Parse(textResult.Text)).ToString(); break;
-                case "/": textResult.Text = (result / Double.Parse(textResult.Text)).ToString(); break;
-                case "*": textResult.Text = (result * Double.Parse(textResult.Text)).ToString(); break;
+                case "+": 
+                    textResult.Text = (result + Double.Parse(textResult.Text)).ToString(); 
+                    break;
+                case "-": 
+                    textResult.Text = (result - Double.Parse(textResult.Text)).ToString(); 
+                    break;
+                case "/": 
+                    textResult.Text = (result / Double.Parse(textResult.Text)).ToString(); 
+                    break;
+                case "*": 
+                    textResult.Text = (result * Double.Parse(textResult.Text)).ToString(); 
+                    break;
+                case "nⁿ":
+                    textResult.Text = Math.Pow(result , Double.Parse(textResult.Text)).ToString(); 
+                    break;
+                case "√":
+                    textResult.Text =  Math.Sqrt(Double.Parse(textResult.Text)).ToString() ; 
+                    break;
                 default: break;
             }
             result = Double.Parse(textResult.Text);
