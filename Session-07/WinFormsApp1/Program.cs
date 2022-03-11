@@ -1,4 +1,4 @@
-namespace Session_06
+namespace WinFormsApp1
 {
     internal static class Program
     {
@@ -8,9 +8,9 @@ namespace Session_06
         [STAThread]
         static void Main()
         {
+            // To customize application configuration such as set high DPI settings or default font,
+            // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            
-
             Application.Run(new Form1());
         }
     }

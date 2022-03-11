@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Session_03
+namespace Session_07
 {
-    internal class Course
+    internal class Courses
     {
         //properties
         public Guid ID { get; set; }
@@ -16,7 +16,6 @@ namespace Session_03
 
 
         // constructor
-        internal Course() {}
-
+        internal Courses() {}
     }
 }

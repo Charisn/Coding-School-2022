@@ -1,0 +1,24 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Session_07
+{
+    internal class Student: Person{
+
+        //properties
+        public int RegistrationNumber { get; set; }
+        public Courses[] Courses { get; set; }
+
+        // constructor
+        public Student() { }
+
+        //methods
+        public void Attend(Courses courses, DateTime dateTime) { }
+        public void WriteExam(Courses courses, DateTime dateTime) { }
+
+    }
+
+}

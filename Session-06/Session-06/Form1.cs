@@ -15,7 +15,6 @@
 
         }
 
-
         private void NumEvent(object sender, EventArgs e)
         {
             if (textResult.Text == "0" || operandPerformed )
