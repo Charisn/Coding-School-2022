@@ -14,20 +14,13 @@ namespace Session_07
 {
     public partial class ProfessorsForm : Form
     {
-        public List<ProfessorInfo> ProfNames { get; set; }
-        public List<ProfessorInfo> ProfRanks { get; set; }
-
-        public List<ProfessorInfo> ProfCourses { get; set; }
+        public List<ProfessorInfo> Professors { get; set; }
 
         private ProfessorInfo _selectedProfessor;
         private ProfessorInfo _originalProfessor;
 
         public ProfessorsForm() { InitializeComponent(); }
 
-        //public Courses[] Courses { get; set; }
-
-        // public void Teach (Courses courses, DateTime date)
-        //{ }
         internal void SetGrade(Schedule StudentID, Grade courseID, Grade grades)
         {
         }
@@ -50,7 +43,7 @@ namespace Session_07
         private void SelectProfessor()
         {
             if(_selectedProfessor != null)
-                _selectedProfessor = ProfNames[listView.SelectedIndex];
+                _selectedProfessor = Professors[listView.SelectedIndex];
         }
 
         private void DisplayProfessor()
@@ -72,15 +65,10 @@ namespace Session_07
         {
             listView.Items.Clear();
 
-            foreach(ProfessorInfo item in ProfNames)
-            {
-                if(item != null)
-                    listView.Items.Add(string.Format("{0}", item.ProfName));
-            }
-            foreach (ProfessorInfo item in ProfRanks)
+            foreach (ProfessorInfo item in Professors)
             {
                 if (item != null)
-                    listView.Items.Add(string.Format("{0}", item.ProfRank));
+                    listView.Items.Add(string.Format("{0}", item.ProfName));
             }
         }
 
@@ -97,7 +85,7 @@ namespace Session_07
 
             ShowList();
 
-            listView.SelectedIndex = ProfNames.IndexOf(professorInfo);
+            listView.SelectedIndex = Professors.IndexOf(professorInfo);
         }
 
         private void button2_del_Click(object sender, EventArgs e)
@@ -110,7 +98,7 @@ namespace Session_07
             if (_selectedProfessor != null)
             {
 
-                ProfNames.Remove(_selectedProfessor);
+                Professors.Remove(_selectedProfessor);
 
                 _selectedProfessor = null;
 
@@ -125,12 +113,12 @@ namespace Session_07
 
             ShowList();
 
-            listView.SelectedIndex = ProfNames.IndexOf(profName);
+            listView.SelectedIndex = Professors.IndexOf(profName);
         }
         private ProfessorInfo CreateProfessor()
         {
             ProfessorManager manager = new ProfessorManager();
-            manager.ProfName = ProfNames;
+            manager.Professors = Professors;
 
             ProfessorInfo profName = manager.AddProfessor();
 

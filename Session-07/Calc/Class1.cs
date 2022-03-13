@@ -3,6 +3,7 @@
         [Serializable]
         public class ProfessorInfo
         {
+
             public string ProfName { get; set; }
 
             public string ProfRank { get; set; }
@@ -30,28 +31,24 @@
         public class ProfessorManager : Manager
         {
 
-            public List<ProfessorInfo> ProfName { get; set; }
-            public List<ProfessorInfo> ProfRank { get; set; }
-            public List<ProfessorInfo> ProfCourses { get; set; }
+            public List<ProfessorInfo>? Professors { get; set; }
 
-            public ProfessorManager()
+        public ProfessorManager()
             {
-                ProfName = new List<ProfessorInfo>();
-                ProfCourses = new List<ProfessorInfo>();
-                ProfRank = new List<ProfessorInfo>();
+                Professors = new List<ProfessorInfo>();
             }
 
 
             public ProfessorInfo AddProfessor()
             {
 
-                return AddProfessor("{enter name}");
+                return AddProfessor("{enter name}", null, null);
         }
 
             public ProfessorInfo AddProfessor(string profName)
             {
 
-            return AddProfessor(profName);
+            return AddProfessor(profName, null, null);
             }
 
             public ProfessorInfo AddProfessor(string profName, string profRank, string profCourses)
@@ -64,11 +61,20 @@
                     ProfCourses = profCourses,
                 };
 
-                ProfName.Add(professorInfo);
+                Professors.Add(professorInfo);
 
                 return professorInfo;
             }
 
         }
+    [Serializable]
+    public class ProfessorList
+    {
+        public List<ProfessorInfo>? Professors { get; set; }
+        public ProfessorList()
+        {
 
+        }
     }
+
+}
