@@ -16,8 +16,8 @@ namespace Session_07
     {
 
         public List<ProfessorInfo> Professors { get; set; }
-        
-        
+
+        ProfessorManager manager = new ProfessorManager();
 
         private ProfessorInfo _selectedProfessor;
         private ProfessorInfo _originalProfessor;
@@ -25,6 +25,9 @@ namespace Session_07
         public ProfessorsForm()
         {
             InitializeComponent();
+
+            Professors = manager.Professors;
+
         }
            
     
@@ -35,9 +38,17 @@ namespace Session_07
         }
         private void SelectProfessor()
         {
-            if(_selectedProfessor != null)
+            if (_selectedProfessor != null)
+            {
                 _selectedProfessor = Professors[listView.SelectedIndex];
+            }
+            else
+            {
+                _selectedProfessor = Professors[0];
+            }
         }
+
+
 
         private void DisplayProfessor()
         {
@@ -58,10 +69,13 @@ namespace Session_07
         {
             listView.Items.Clear();
 
-            foreach (ProfessorInfo item in Professors)
+            if (Professors != null)
             {
-                if (item != null)
-                    listView.Items.Add(string.Format("{0}", item.ProfName));
+                foreach (ProfessorInfo item in Professors)
+                {
+                    if (item != null)
+                        listView.Items.Add(string.Format("{0}", item.ProfName));
+                }
             }
         }
 
@@ -79,6 +93,7 @@ namespace Session_07
             ShowList();
 
             listView.SelectedIndex = Professors.IndexOf(professorInfo);
+            
         }
 
         private void Professors_del_Click(object sender, EventArgs e)
@@ -110,12 +125,9 @@ namespace Session_07
         }
         private ProfessorInfo CreateProfessor()
         {
-            ProfessorManager manager = new ProfessorManager();
-            manager.Professors = Professors;
-
+            
             ProfessorInfo profName = manager.AddProfessor();
-
-
+            Professors.Add(profName);
             return profName;
         }
 

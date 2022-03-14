@@ -55,8 +55,10 @@
                     ProfCourses = profCourses,
                 };
 
+                if (Professors != null)
+                {
                 Professors.Add(professorInfo);
-           
+                }
                 return professorInfo;
             }
 
