@@ -90,6 +90,7 @@ namespace Session_07
         {
             ProfessorInfo professorInfo = CreateProfessor();
 
+            
             ShowList();
 
             listView.SelectedIndex = Professors.IndexOf(professorInfo);
@@ -114,10 +115,14 @@ namespace Session_07
             }
             DisplayProfessor();
         }
-
+        
         private void Professors_save_Click(object sender, EventArgs e)
         {
             ProfessorInfo profName = CreateProfessor();
+
+            _selectedProfessor.ProfName = txtName.Text;
+            _selectedProfessor.ProfRank = txtRank.Text;
+            _selectedProfessor.ProfCourses = txtCourses.Text;
 
             ShowList();
 
@@ -127,7 +132,7 @@ namespace Session_07
         {
             
             ProfessorInfo profName = manager.AddProfessor();
-            Professors.Add(profName);
+
             return profName;
         }
 
