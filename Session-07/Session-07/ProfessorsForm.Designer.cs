@@ -56,7 +56,6 @@
             this.label1.Size = new System.Drawing.Size(39, 15);
             this.label1.TabIndex = 2;
             this.label1.Text = "Name";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -98,7 +97,7 @@
             this.button1_new.TabIndex = 7;
             this.button1_new.Text = "New...";
             this.button1_new.UseVisualStyleBackColor = true;
-            this.button1_new.Click += new System.EventHandler(this.button1_new_Click);
+            this.button1_new.Click += new System.EventHandler(this.Professors_new_Click);
             // 
             // button2_del
             // 
@@ -108,7 +107,7 @@
             this.button2_del.TabIndex = 8;
             this.button2_del.Text = "Delete";
             this.button2_del.UseVisualStyleBackColor = true;
-            this.button2_del.Click += new System.EventHandler(this.button2_del_Click);
+            this.button2_del.Click += new System.EventHandler(this.Professors_del_Click);
             // 
             // button3_save
             // 
@@ -118,7 +117,7 @@
             this.button3_save.TabIndex = 9;
             this.button3_save.Text = "Save";
             this.button3_save.UseVisualStyleBackColor = true;
-            this.button3_save.Click += new System.EventHandler(this.button3_save_Click);
+            this.button3_save.Click += new System.EventHandler(this.Professors_save_Click);
             // 
             // button4_exit
             // 
@@ -128,7 +127,7 @@
             this.button4_exit.TabIndex = 10;
             this.button4_exit.Text = "Exit";
             this.button4_exit.UseVisualStyleBackColor = true;
-            this.button4_exit.Click += new System.EventHandler(this.button4_exit_Click);
+            this.button4_exit.Click += new System.EventHandler(this.Professors_exit_Click);
             // 
             // listView
             // 

@@ -14,32 +14,25 @@ namespace Session_07
 {
     public partial class ProfessorsForm : Form
     {
+
         public List<ProfessorInfo> Professors { get; set; }
+        
+        
 
         private ProfessorInfo _selectedProfessor;
         private ProfessorInfo _originalProfessor;
 
-        public ProfessorsForm() { InitializeComponent(); }
-
-        internal void SetGrade(Schedule StudentID, Grade courseID, Grade grades)
+        public ProfessorsForm()
         {
+            InitializeComponent();
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-        }
+           
+    
 
         private void Professors_Load(object sender, EventArgs e)
         {
+            ShowList();
         }
-
-        private void ProfessorList(object sender, EventArgs e)
-        {
-            SelectProfessor();
-
-            DisplayProfessor();
-        }
-
         private void SelectProfessor()
         {
             if(_selectedProfessor != null)
@@ -79,7 +72,7 @@ namespace Session_07
             DisplayProfessor();
         }
 
-        private void button1_new_Click(object sender, EventArgs e)
+        private void Professors_new_Click(object sender, EventArgs e)
         {
             ProfessorInfo professorInfo = CreateProfessor();
 
@@ -88,7 +81,7 @@ namespace Session_07
             listView.SelectedIndex = Professors.IndexOf(professorInfo);
         }
 
-        private void button2_del_Click(object sender, EventArgs e)
+        private void Professors_del_Click(object sender, EventArgs e)
         {
             DeleteProfessor();
         }
@@ -107,7 +100,7 @@ namespace Session_07
             DisplayProfessor();
         }
 
-        private void button3_save_Click(object sender, EventArgs e)
+        private void Professors_save_Click(object sender, EventArgs e)
         {
             ProfessorInfo profName = CreateProfessor();
 
@@ -126,10 +119,20 @@ namespace Session_07
             return profName;
         }
 
-        private void button4_exit_Click(object sender, EventArgs e)
+        private void Professors_exit_Click(object sender, EventArgs e)
         {
-
-            this.DialogResult = DialogResult.OK;
+            string message = "Do you want to close this window?";
+            string title = "Close Window";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(message, title, buttons);
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
+            else
+            {
+                //Not closing window.
+            }
         }
     }
 }

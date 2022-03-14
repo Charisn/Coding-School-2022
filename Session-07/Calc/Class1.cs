@@ -33,25 +33,25 @@
 
             public List<ProfessorInfo>? Professors { get; set; }
 
-        public ProfessorManager()
+        public ProfessorManager() 
             {
                 Professors = new List<ProfessorInfo>();
             }
 
 
-            public ProfessorInfo AddProfessor()
+            public ProfessorInfo? AddProfessor()
             {
 
-                return AddProfessor("{enter name}", null, null);
+                return AddProfessor("{enter name}", "" , "");
         }
 
-            public ProfessorInfo AddProfessor(string profName)
+            public ProfessorInfo? AddProfessor(string profName)
             {
 
-            return AddProfessor(profName, null, null);
+            return AddProfessor(profName, "", "");
             }
 
-            public ProfessorInfo AddProfessor(string profName, string profRank, string profCourses)
+            public ProfessorInfo? AddProfessor(string profName, string profRank, string profCourses)
             {
 
                 ProfessorInfo professorInfo = new ProfessorInfo()

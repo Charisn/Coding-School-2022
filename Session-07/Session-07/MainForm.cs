@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using Calc;
 
 namespace Session_07
 {
@@ -15,6 +16,8 @@ namespace Session_07
         {
             InitializeComponent();
         }
+
+        private Calc.ProfessorList _professorList;
 
         #region Save/LoadData()
         private void LoadData()
@@ -41,24 +44,14 @@ namespace Session_07
 
         private void XtraForm1_Load(object sender, EventArgs e)
         {
-
+            //string s = File.ReadAllText(FILE_NAME);
+           // _professorList = (Calc.ProfessorList)JsonSerializer.Deserialize(s, typeof(Calc.ProfessorList));
         }
 
         private void MenuProfessors(object sender, EventArgs e)
         {
 
         }
-
-        private void MenuStudents(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MenuCourses(object sender, EventArgs e)
-        {
-
-        }
-
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
@@ -77,11 +70,19 @@ namespace Session_07
         private void MenuItemProfessorLoad_Click(object sender, EventArgs e)
         {
 
+            string s = File.ReadAllText(FILE_NAME);
+
+            _professorList = (Calc.ProfessorList)JsonSerializer.Deserialize(s, typeof(Calc.ProfessorList));
         }
 
         private void MenuItemProfessorSave_Click(object sender, EventArgs e)
         {
 
+            string json = JsonSerializer.Serialize(_professorList);
+
+            File.WriteAllText(FILE_NAME, json);
+
+            MessageBox.Show("File Saved!");
         }
 
         private void MenuItemProfessorEdit_Click(object sender, EventArgs e)
