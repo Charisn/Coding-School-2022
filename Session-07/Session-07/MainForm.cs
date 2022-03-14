@@ -91,5 +91,28 @@ namespace Session_07
             f.ShowDialog();           
             
         }
+
+        private void MainForm_btn_Exit(object sender, EventArgs e)
+        {
+            string message = "Do you want to close this window?";
+            string title = "Close Window";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(message, title, buttons);
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
+            else
+            {
+                //Not closing window.
+            }
+        }
+
+        private void MainForm_btn_Save(object sender, EventArgs e)
+        {
+            string title = "Saved";
+            MessageBox.Show("Progress is now saved!", title);
+
+        }
     }
 }

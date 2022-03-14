@@ -39,19 +39,13 @@
             }
 
 
-            public ProfessorInfo? AddProfessor()
+            public ProfessorInfo AddProfessor()
             {
 
-                return AddProfessor("{enter name}", "" , "");
+                return AddProfessor("{enter name}", "{enter rank}", "{enter course}");
         }
 
-            public ProfessorInfo? AddProfessor(string profName)
-            {
-
-            return AddProfessor(profName, "", "");
-            }
-
-            public ProfessorInfo? AddProfessor(string profName, string profRank, string profCourses)
+            public ProfessorInfo AddProfessor(string profName, string profRank, string profCourses)
             {
 
                 ProfessorInfo professorInfo = new ProfessorInfo()
@@ -62,7 +56,7 @@
                 };
 
                 Professors.Add(professorInfo);
-
+           
                 return professorInfo;
             }
 
