@@ -73,6 +73,8 @@ namespace Session_07
             string s = File.ReadAllText(FILE_NAME);
 
             _professorList = (Calc.ProfessorList)JsonSerializer.Deserialize(s, typeof(Calc.ProfessorList));
+
+            MessageBox.Show("File Loaded!");
         }
 
         private void MenuItemProfessorSave_Click(object sender, EventArgs e)
