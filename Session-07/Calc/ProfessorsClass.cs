@@ -48,7 +48,7 @@
             public ProfessorInfo AddProfessor(string profName, string profRank, string profCourses)
             {
 
-                ProfessorInfo professorInfo = new ProfessorInfo()
+            ProfessorInfo professorInfo = new ProfessorInfo()
                 {
                     ProfName = profName,
                     ProfRank = profRank,

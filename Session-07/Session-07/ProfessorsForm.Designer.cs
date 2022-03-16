@@ -43,7 +43,7 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(364, 19);
+            this.txtName.Location = new System.Drawing.Point(355, 29);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(142, 23);
             this.txtName.TabIndex = 1;
@@ -51,7 +51,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(320, 22);
+            this.label1.Location = new System.Drawing.Point(311, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(39, 15);
             this.label1.TabIndex = 2;
@@ -60,7 +60,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(320, 51);
+            this.label2.Location = new System.Drawing.Point(311, 61);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(33, 15);
             this.label2.TabIndex = 4;
@@ -68,7 +68,7 @@
             // 
             // txtRank
             // 
-            this.txtRank.Location = new System.Drawing.Point(364, 48);
+            this.txtRank.Location = new System.Drawing.Point(355, 58);
             this.txtRank.Name = "txtRank";
             this.txtRank.Size = new System.Drawing.Size(142, 23);
             this.txtRank.TabIndex = 3;
@@ -76,7 +76,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(320, 80);
+            this.label3.Location = new System.Drawing.Point(311, 90);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 15);
             this.label3.TabIndex = 6;
@@ -84,7 +84,7 @@
             // 
             // txtCourses
             // 
-            this.txtCourses.Location = new System.Drawing.Point(375, 77);
+            this.txtCourses.Location = new System.Drawing.Point(366, 87);
             this.txtCourses.Name = "txtCourses";
             this.txtCourses.Size = new System.Drawing.Size(131, 23);
             this.txtCourses.TabIndex = 5;

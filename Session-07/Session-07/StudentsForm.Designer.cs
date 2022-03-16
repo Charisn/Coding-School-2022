@@ -1,6 +1,6 @@
 ﻿namespace Session_07
 {
-    partial class Students
+    partial class StudentsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,10 +31,8 @@
             this.listView = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtCourses = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtRank = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtRegNumber = new System.Windows.Forms.TextBox();
             this.button4_exit = new System.Windows.Forms.Button();
             this.button3_save = new System.Windows.Forms.Button();
             this.button2_del = new System.Windows.Forms.Button();
@@ -50,11 +48,12 @@
             this.listView.Name = "listView";
             this.listView.Size = new System.Drawing.Size(274, 424);
             this.listView.TabIndex = 13;
+            this.listView.SelectedIndexChanged += new System.EventHandler(this.listView_SelectedIndexChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(322, 92);
+            this.label3.Location = new System.Drawing.Point(380, 97);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 15);
             this.label3.TabIndex = 19;
@@ -62,42 +61,26 @@
             // 
             // txtCourses
             // 
-            this.txtCourses.Location = new System.Drawing.Point(377, 89);
+            this.txtCourses.Location = new System.Drawing.Point(435, 94);
             this.txtCourses.Name = "txtCourses";
-            this.txtCourses.Size = new System.Drawing.Size(131, 23);
+            this.txtCourses.Size = new System.Drawing.Size(171, 23);
             this.txtCourses.TabIndex = 18;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(322, 63);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(33, 15);
-            this.label2.TabIndex = 17;
-            this.label2.Text = "Rank";
-            // 
-            // txtRank
-            // 
-            this.txtRank.Location = new System.Drawing.Point(366, 60);
-            this.txtRank.Name = "txtRank";
-            this.txtRank.Size = new System.Drawing.Size(142, 23);
-            this.txtRank.TabIndex = 16;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(322, 34);
+            this.label1.Location = new System.Drawing.Point(300, 65);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 15);
+            this.label1.Size = new System.Drawing.Size(117, 15);
             this.label1.TabIndex = 15;
-            this.label1.Text = "Name";
+            this.label1.Text = "Registration Number";
             // 
-            // txtName
+            // txtRegNumber
             // 
-            this.txtName.Location = new System.Drawing.Point(366, 31);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(142, 23);
-            this.txtName.TabIndex = 14;
+            this.txtRegNumber.Location = new System.Drawing.Point(423, 65);
+            this.txtRegNumber.Name = "txtRegNumber";
+            this.txtRegNumber.Size = new System.Drawing.Size(183, 23);
+            this.txtRegNumber.TabIndex = 14;
             // 
             // button4_exit
             // 
@@ -150,10 +133,8 @@
             this.Controls.Add(this.button1_new);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtCourses);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtRank);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtName);
+            this.Controls.Add(this.txtRegNumber);
             this.Controls.Add(this.listView);
             this.Name = "Students";
             this.Text = "Students";
@@ -168,10 +149,8 @@
         private ListBox listView;
         private Label label3;
         private TextBox txtCourses;
-        private Label label2;
-        private TextBox txtRank;
         private Label label1;
-        private TextBox txtName;
+        private TextBox txtRegNumber;
         private Button button4_exit;
         private Button button3_save;
         private Button button2_del;

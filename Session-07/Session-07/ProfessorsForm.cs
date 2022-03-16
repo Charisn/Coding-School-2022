@@ -130,7 +130,7 @@ namespace Session_07
         }
         private ProfessorInfo CreateProfessor()
         {
-            
+
             ProfessorInfo profName = manager.AddProfessor();
 
             return profName;

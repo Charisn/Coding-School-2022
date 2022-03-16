@@ -7,12 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Calc;
 
 namespace Session_07
 {
-    public partial class Students : Form
+    public partial class StudentsForm : Form
     {
-        public Students()
+        public List<StudentInfo> Students { get; set; }
+        private StudentInfo _studentsInfo;
+
+        public StudentsForm()
         {
             InitializeComponent();
         }
@@ -51,6 +55,11 @@ namespace Session_07
             {
                 //Not closing window.
             }
+        }
+
+        private void listView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
