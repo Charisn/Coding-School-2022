@@ -9,7 +9,7 @@ namespace Calc
     public class StudentInfo
     {
 
-        public Guid RegistrationNumber { get; set; }
+        public Guid RegistrationNumber { get; set; } 
 
         public string StudentCourses { get; set; }
 
@@ -47,10 +47,10 @@ namespace Calc
             public StudentInfo AddStudent()
             {
 
-                return AddStudent(0, "{enter course}");
+                return AddStudent(Guid.Empty, "{enter course}");
             }
 
-            public StudentInfo AddStudent(int registrationNumber, string studentCourses)
+            public StudentInfo AddStudent(Guid registrationNumber, string studentCourses)
             {
 
                 StudentInfo studentInfo = new StudentInfo()
