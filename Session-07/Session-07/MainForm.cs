@@ -116,5 +116,11 @@ namespace Session_07
             MessageBox.Show("Progress is now saved!", title);
 
         }
+
+        private void editToolStripMenuStudents_Click(object sender, EventArgs e)
+        {
+            StudentsForm studentsForm = new StudentsForm();
+            studentsForm.ShowDialog();
+        }
     }
 }
