@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PetShopLib.Interfaces;
-using System.ComponentModel.DataAnnotations;
 
 namespace PetShopLib.Impl
 {
@@ -15,7 +14,6 @@ namespace PetShopLib.Impl
 
         public Transaction(Guid customerID, Guid employeeID, Guid petID, decimal petPrice, Guid petFoodID, int petFoodQty, decimal petFoodPrice, decimal totalPrice) : this()
         {
-
             CustomerID = customerID;
             EmployeeID = employeeID;
             PetID = petID;
@@ -32,7 +30,6 @@ namespace PetShopLib.Impl
             Date = DateTime.Now;
         }
 
-        [Required]
         public DateTime Date { get; set; }
         public Guid CustomerID { get; set; }
         public Guid EmployeeID { get; set; }

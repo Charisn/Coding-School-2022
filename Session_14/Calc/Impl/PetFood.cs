@@ -5,13 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
 
 namespace PetShopLib.Impl
 {
     public class PetFood : IPetFood
     {
-        [Required]
         public AnimalTypeEnum AnimalType { get; set; }
         public Guid ID { get; set; }
         public decimal Price { get; set; }
@@ -19,7 +17,10 @@ namespace PetShopLib.Impl
 
         public PetFood()
         {
-            ID = Guid.NewGuid();
+            
+                ID = Guid.NewGuid();
+            
+
         }
 
         public PetFood ShallowCopy()

@@ -5,13 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
 
 namespace PetShopLib.Impl
 {
     public class Pet : IPet
     {
-        [Required]
         public string Breed { get; set; }
         public PetStatusEnum PetStatus { get; set; }
         public AnimalTypeEnum AnimalType { get; set; }
@@ -21,7 +19,9 @@ namespace PetShopLib.Impl
 
         public Pet()
         {
-            ID = Guid.NewGuid();
+            
+                ID = Guid.NewGuid();
+            
         }
     }
 }
