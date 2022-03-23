@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraEditors;
+﻿
+using DevExpress.XtraEditors;
 using PetShopLib.Impl;
 using System;
 using System.Collections.Generic;
@@ -21,9 +22,9 @@ namespace Session_11
         public TransactionListForm()
         {
             InitializeComponent();
-            PetShop petShop = new PetShop();
-            bsTrans.DataSource = petShop.Transactions;
-            grdTransaction.DataSource = bsTrans;
+            //PetShop petShop = new PetShop();
+            //bsTrans.DataSource = petShop.Transactions;
+            //grdTransaction.DataSource = bsTrans;
         }
 
         private void PopulateTransaction()
@@ -32,6 +33,5 @@ namespace Session_11
             var petshop = (PetShop)JsonSerializer.Deserialize(s, typeof(PetShop));
 
         }
-        
     }
 }

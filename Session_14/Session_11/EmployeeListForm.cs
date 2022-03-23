@@ -25,20 +25,16 @@ namespace Session_11
         {
             InitializeComponent();
         }
-
         private void EmployeeListForm_Load(object sender, EventArgs e)
         {
             PopulateControls();
             PopulateEmployees();
         }
-
         private void PopulateControls()
         {
-
             Dictionary<EmployeeTypeEnum, string> employeeTypes = new Dictionary<EmployeeTypeEnum, string>();
             employeeTypes.Add(EmployeeTypeEnum.Manager, "Manager");
             employeeTypes.Add(EmployeeTypeEnum.Staff, "Staff");
-            
 
             repEmployeeType.DataSource = employeeTypes;
             repEmployeeType.Columns.Add(new LookUpColumnInfo("Value"));
@@ -46,11 +42,6 @@ namespace Session_11
             repEmployeeType.ValueMember = "Key";
             repEmployeeType.ShowHeader = false;
             repEmployeeType.NullText = null;
-
-
-
-            
-
         }
 
         private void PopulateEmployees()
@@ -58,35 +49,26 @@ namespace Session_11
             string s = File.ReadAllText(FILE_NAME);
             var petShop = (PetShop)JsonSerializer.Deserialize(s, typeof(PetShop));
             bsPetShop.DataSource = petShop;
-
             bsEmployees.DataSource = bsPetShop;
             bsEmployees.DataMember = "Employees";
-
             grdEmployees.DataSource = bsEmployees;
-           
         }
 
         private void btnNew_Click(object sender, EventArgs e)
         {
             var petShop = bsPetShop.Current as PetShop;
-
             EmployeeForm employeeForm = new EmployeeForm(petShop);
             employeeForm.ShowDialog();
-            grvEmployees.RefreshData();
-
-            
+            grvEmployees.RefreshData();            
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
             var petShop = bsPetShop.Current as PetShop;
             var employee = bsEmployees.Current as Employee;
-
             EmployeeForm employeeForm = new EmployeeForm(petShop,employee);
             employeeForm.ShowDialog();
             grvEmployees.RefreshData();
-
-
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -104,9 +86,7 @@ namespace Session_11
         {
             var petShop = bsPetShop.Current as PetShop;
             string json = JsonSerializer.Serialize(petShop);
-            File.WriteAllText(FILE_NAME, json);
-
-            
+            File.WriteAllText(FILE_NAME, json);            
         }
     }
 }

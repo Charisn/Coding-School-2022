@@ -25,20 +25,16 @@ namespace Session_11
 
         private void PetFormList_Load(object sender, EventArgs e)
         {
-            PopulatePets();
-            
-        }
-        
+            PopulatePets();            
+        }        
         private void PopulatePets()
         { 
             string s = File.ReadAllText(FILE_NAME);
             var petShop = (PetShop)JsonSerializer.Deserialize(s, typeof(PetShop));
 
             bsPetShop.DataSource = petShop;
-
             bsPets.DataSource = bsPetShop;
             bsPets.DataMember = "Pets";
-
             grdPets.DataSource = bsPets;
         }
 
@@ -48,14 +44,11 @@ namespace Session_11
             var petShop = bsPetShop.Current as PetShop;
             string json = JsonSerializer.Serialize(petShop);
             File.WriteAllText(FILE_NAME, json);
-
-
         }
 
         private void btnNew_Click_1(object sender, EventArgs e)
         {
             var petShop = bsPetShop.Current as PetShop;
-
             PetForm petForm = new PetForm(petShop);
             petForm.ShowDialog();
             grvPets.RefreshData();

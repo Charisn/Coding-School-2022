@@ -33,29 +33,19 @@ namespace Session_11
             _petShop = petShop;
         }
         public CustomerForm(PetShop petShop, Customer customer):this(petShop)
-        {
-            
+        {            
             _customer = customer;
         }
-
         private void CustomerForm_Load(object sender, EventArgs e)
         {
-           
-
-
             if (_customer == null)
             {
                 _customer = new Customer();
                 _petShop.Customers.Add(_customer);
                 bsCustomers.DataSource = _customer;
-
-
             }
-
             bsCustomers.DataSource = _customer;
-
             SetDataBindings();
-
         }
 
         private void SetDataBindings()

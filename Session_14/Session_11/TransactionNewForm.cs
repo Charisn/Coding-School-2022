@@ -22,12 +22,15 @@ namespace Session_11
         private Customer _currentCustomer;
         private Employee _currentEmployee;
 
+        public object _transaction { get; internal set; }
+
         public TransactionNewForm()
         {
             LoadPetsShopJson();
             InitializeComponent();
-            _thisTransaction = new Transaction();            
-            _petShop.Transactions.Add(_thisTransaction);
+            _petShop.Transactions = new List<Transaction>();
+            _thisTransaction = new Transaction();     
+            //_petShop.Transactions.Add(_thisTransaction);
             
         }
 
@@ -59,7 +62,6 @@ namespace Session_11
 
         private void SetDataBindings()
         {
-            //BindingSource bsTransactions = new BindingSource();
             ctrlPetFoodPrice.DataBindings.Add(new Binding("EditValue", bsTransactions, "PetFoodPrice", true));
             ctrlPetPrice.DataBindings.Add(new Binding("EditValue", bsTransactions, "PetPrice", true));
             ctrlPetFoodQty.DataBindings.Add(new Binding("EditValue", bsTransactions, "PetFoodQty", true));
@@ -103,10 +105,9 @@ namespace Session_11
             _thisTransaction.PetFoodPrice = _currentFoodPrice;
             _thisTransaction.TotalPrice = _grandTotal;
             _thisTransaction.PetPrice = _petPrice;
-            _thisTransaction.CustomerID = _currentCustomer.ID;
-            _thisTransaction.EmployeeID = _currentEmployee.ID;
             _thisTransaction.PetID = pet.ID;
-            //_thisTransaction.PetFoodID = _petFoodID.ToString();
+            if (_currentCustomer is not null){_thisTransaction.CustomerID=_currentCustomer.ID;}
+            if (_currentEmployee is not null){_thisTransaction.EmployeeID=_currentEmployee.ID;}
         }
         private void Save()
         {
@@ -117,7 +118,9 @@ namespace Session_11
         }
         private void btnSaveNewTrans_Click(object sender, EventArgs e)
         {
-            _petShop.Transactions.Add(_thisTransaction);
+            var list = new List<Transaction>();
+            list.Add(new Transaction());
+            this.Close();
             //Save();
         }
         private void ctrlPet_EditValueChanged(object sender, EventArgs e)
@@ -130,14 +133,7 @@ namespace Session_11
             string title = "Close Window";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult result = MessageBox.Show(message, title, buttons);
-            if (result == DialogResult.Yes)
-            {
-                this.Close();
-            }
-            else
-            {
-                //Not closing window.
-            }
+            if (result == DialogResult.Yes){this.Close();}
         }
 
         private void ctrlPetFoodQty_EditValueChanged(object sender, EventArgs e)

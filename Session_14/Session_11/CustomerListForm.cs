@@ -16,31 +16,23 @@ namespace Session_11
 {
     public partial class CustomerListForm : DevExpress.XtraEditors.XtraForm
     {
-        private const string FILE_NAME = "PetShop.json";
-        
+        private const string FILE_NAME = "PetShop.json";        
         public CustomerListForm()
         {
             InitializeComponent();
         }
-       
-
         private void gridControl1_Load(object sender, EventArgs e)
         {
 
         }
-
         private void CustomerList_Load(object sender, EventArgs e)
         {
-            PopulateCustomers();
-            
+            PopulateCustomers();            
         }
         private void PopulateCustomers()
-        {
-            
-            
+        {             
             string s = File.ReadAllText(FILE_NAME);
             var petShop = (PetShop)JsonSerializer.Deserialize(s, typeof(PetShop));
-
             bsPetShop.DataSource = petShop;
             bsCustomers.DataSource = bsPetShop;
             bsCustomers.DataMember = "Customers";
@@ -51,7 +43,6 @@ namespace Session_11
         {
 
         }
-
         private void btnNew_Click(object sender, EventArgs e)
         {
             var petShop = bsPetShop.Current as PetShop;
@@ -83,8 +74,6 @@ namespace Session_11
             var petShop = bsPetShop.Current as PetShop;
             string json = JsonSerializer.Serialize(petShop);
             File.WriteAllText(FILE_NAME, json);
-
-
         }
 
         private void btnClose_Click(object sender, EventArgs e)

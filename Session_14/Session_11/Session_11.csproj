@@ -10,10 +10,16 @@
 
   <ItemGroup>
     <PackageReference Include="DevExpress.Win.Design" Version="21.2.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Calc\PetShopLib.csproj" />
+    <ProjectReference Include="..\EF_Library\EF_Library.csproj" />
     <ProjectReference Include="..\SecurityLib\SecurityLib.csproj" />
   </ItemGroup>
 

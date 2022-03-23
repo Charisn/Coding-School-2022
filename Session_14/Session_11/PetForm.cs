@@ -39,16 +39,11 @@ namespace Session_11
 
         private void PetForm_Load(object sender, EventArgs e)
         {
-            
-
-
             if (_pet == null)
             {
                 _pet = new Pet();
                 _petShop.Pets.Add(_pet);
                 bsPets.DataSource = _pet;
-
-
             }
 
             bsPets.DataSource = _pet;
@@ -83,9 +78,5 @@ namespace Session_11
             _petShop.Pets.Remove(_pet);
             this.Close();
         }
-    }
-        
-
-       
-    
+    }    
 }
