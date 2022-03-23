@@ -17,7 +17,7 @@ internal class TransactionRepo : IEntityRepo<Transaction>
         await context.SaveChangesAsync();
     }
 
-    public async Task Delete(int id)
+    public async Task Delete(Guid id)
     {
         using var context = new PetShopLibContext();
         var foundTransaction = context.Transactions.SingleOrDefault(x => x.ID.Equals(id));
@@ -34,16 +34,16 @@ internal class TransactionRepo : IEntityRepo<Transaction>
         return context.Transactions.ToList();
     }
 
-    public Transaction? GetById(int id)
+    public Transaction? GetById(Guid id)
     {
         using var context = new PetShopLibContext();
         return context.Transactions.Where(x => x.ID.Equals(id)).SingleOrDefault();
     }
 
-    public async Task Update(int id, Transaction entity)
+    public async Task Update(Guid id, Transaction entity)
     {
         using var context = new PetShopLibContext();
-        var foundTransaction = context.Transactions.Include(x => x.EmployeeID).Include(x => x.PetID).Include(x => x.PetFoodID).Include(x => x.PetPrice).Include(x => x.PetFoodQty).Include(x => x.PetFoodPrice).Include(x => x.TotalPrice).SingleOrDefault(x => x.ID.Equals(id));
+        var foundTransaction = context.Transactions.Include(x => x.EmployeeID).Include(x => x.CustomerID).Include(x => x.PetID).Include(x => x.PetFoodID).Include(x => x.PetPrice).Include(x => x.PetFoodQty).Include(x => x.PetFoodPrice).Include(x => x.TotalPrice).SingleOrDefault(x => x.ID.Equals(id));
         if (foundTransaction is null)
             return;
         foundTransaction.Date = entity.Date;
@@ -54,6 +54,7 @@ internal class TransactionRepo : IEntityRepo<Transaction>
         foundTransaction.PetFoodQty = entity.PetFoodQty;
         foundTransaction.PetFoodPrice = entity.PetFoodPrice;
         foundTransaction.TotalPrice = entity.TotalPrice;
+        foundTransaction.CustomerID = entity.CustomerID;
         await context.SaveChangesAsync();
     }
 }

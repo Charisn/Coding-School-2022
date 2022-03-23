@@ -17,7 +17,7 @@ internal class PetRepo : IEntityRepo<Pet>
         await context.SaveChangesAsync();
     }
 
-    public async Task Delete(int id)
+    public async Task Delete(Guid id)
     {
         using var context = new PetShopLibContext();
         var foundPet = context.Pets.SingleOrDefault(x => x.ID.Equals(id));
@@ -34,13 +34,13 @@ internal class PetRepo : IEntityRepo<Pet>
         return context.Pets.ToList();
     }
 
-    public Pet? GetById(int id)
+    public Pet? GetById(Guid id)
     {
         using var context = new PetShopLibContext();
         return context.Pets.Where(x => x.ID.Equals(id)).SingleOrDefault();
     }
 
-    public async Task Update(int id, Pet entity)
+    public async Task Update(Guid id, Pet entity)
     {
         using var context = new PetShopLibContext();
         var foundPet = context.Pets.Include(x => x.AnimalType).Include(x => x.Cost).Include(x => x.Price).Include(x => x.Breed).Include(x => x.Breed).SingleOrDefault(x => x.ID.Equals(id));

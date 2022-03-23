@@ -8,7 +8,7 @@ using PetShopLib.Impl;
 
 namespace EF_Library.Repositories;
 
-internal class EmployeeRepo
+internal class EmployeeRepo : IEntityRepo<Employee>
 {
     public async Task Create(Employee entity)
     {
@@ -17,7 +17,7 @@ internal class EmployeeRepo
         await context.SaveChangesAsync();
     }
 
-    public async Task Delete(int id)
+    public async Task Delete(Guid id)
     {
         using var context = new PetShopLibContext();
         var foundEmployee = context.Employees.SingleOrDefault(x => x.ID.Equals(id));
@@ -34,13 +34,13 @@ internal class EmployeeRepo
         return context.Employees.ToList();
     }
 
-    public Employee? GetById(int id)
+    public Employee? GetById(Guid id)
     {
         using var context = new PetShopLibContext();
         return context.Employees.Where(x => x.ID.Equals(id)).SingleOrDefault();
     }
 
-    public async Task Update(int id, Employee entity)
+    public async Task Update(Guid id, Employee entity)
     {
         using var context = new PetShopLibContext();
         var foundEmployee = context.Employees.Include(x => x.SalaryPerMonth).Include(x => x.EmployeeType).Include(x => x.SurName).Include(x => x.Name).SingleOrDefault(x => x.ID.Equals(id));

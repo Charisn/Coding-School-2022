@@ -11,8 +11,8 @@ public interface IEntityRepo<TEntity>
         where TEntity : BaseEntity
 {
     List<TEntity> GetAll();
-    TEntity? GetById(int id);
+    TEntity? GetById(Guid id);
     Task Create(TEntity entity);
-    Task Update(int id, TEntity entity);
-    Task Delete(int id);
+    Task Update(Guid id, TEntity entity);
+    Task Delete(Guid id);
 }

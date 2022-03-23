@@ -17,7 +17,7 @@ namespace EF_Library.Repositories
             await context.SaveChangesAsync();
         }
 
-        public async Task Delete(int id)
+        public async Task Delete(Guid id)
         {
             using var context = new PetShopLibContext();
             var foundPetFood = context.PetFoods.SingleOrDefault(x => x.ID.Equals(id));
@@ -34,13 +34,13 @@ namespace EF_Library.Repositories
             return context.PetFoods.ToList();
         }
 
-        public PetFood? GetById(int id)
+        public PetFood? GetById(Guid id)
         {
             using var context = new PetShopLibContext();
             return context.PetFoods.Where(x => x.ID.Equals(id)).SingleOrDefault();
         }
 
-        public async Task Update(int id, PetFood entity)
+        public async Task Update(Guid id, PetFood entity)
         {
             using var context = new PetShopLibContext();
             var foundPetFood = context.PetFoods.Include(x => x.AnimalType).Include(x => x.Cost).Include(x => x.Price).SingleOrDefault(x => x.ID.Equals(id));
