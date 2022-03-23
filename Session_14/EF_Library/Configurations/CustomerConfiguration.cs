@@ -14,13 +14,13 @@ namespace EF_Library.Configurations
         public void Configure(EntityTypeBuilder<Customer> builder)
         {
             builder.ToTable("Customer");
-            builder.HasKey(x => x.ID);
+            builder.HasKey(Customer => Customer.ID);
 
-            builder.Property(x => x.ID);
-            builder.Property(x => x.Name).HasMaxLength(50);
-            builder.Property(x => x.SurName).HasMaxLength(50);
-            builder.Property(x => x.Phone);
-            builder.Property(x => x.TIN);
+            builder.Property(Customer => Customer.ID);
+            builder.Property(Customer => Customer.Name).HasMaxLength(50);
+            builder.Property(Customer => Customer.SurName).HasMaxLength(50);
+            builder.Property(Customer => Customer.Phone);
+            builder.Property(Customer => Customer.TIN);
         }
     }
 }

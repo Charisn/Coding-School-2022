@@ -15,13 +15,13 @@ namespace EF_Library.Configurations
         public void Configure(EntityTypeBuilder<Employee> builder)
         {
             builder.ToTable("Employee");
-            builder.HasKey(x => x.ID);
+            builder.HasKey(Employee => Employee.ID);
 
-            builder.Property(x => x.ID);
-            builder.Property(x => x.Name).HasMaxLength(50);
-            builder.Property(x => x.SurName).HasMaxLength(50);
-            builder.Property(x => x.SalaryPerMonth);
-            builder.Property(x => x.EmployeeType);
+            builder.Property(Employee => Employee.ID);
+            builder.Property(Employee => Employee.Name).HasMaxLength(50);
+            builder.Property(Employee => Employee.SurName).HasMaxLength(50);
+            builder.Property(Employee => Employee.SalaryPerMonth);
+            builder.Property(Employee => Employee.EmployeeType);
         }
     }
 }

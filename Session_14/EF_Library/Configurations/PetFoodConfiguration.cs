@@ -15,13 +15,13 @@ namespace EF_Library.Configurations
         public void Configure(EntityTypeBuilder<PetFood> builder)
         {
             builder.ToTable("PetFood");
-            builder.HasKey(x => x.ID);
+            builder.HasKey(PetFood => PetFood.ID);
 
-            builder.Property(x => x.ID);
-            builder.Property(x => x.Cost);
-            builder.Property(x => x.Price);
-            builder.Property(x => x.AnimalType);
-            builder.HasIndex(x => x.AnimalType).HasName("PetAnimalType");
+            builder.Property(PetFood => PetFood.ID);
+            builder.Property(PetFood => PetFood.Cost);
+            builder.Property(PetFood => PetFood.Price);
+            builder.Property(PetFood => PetFood.AnimalType);
+            builder.HasIndex(PetFood => PetFood.AnimalType).HasName("PetAnimalType");
         }
     }
 }

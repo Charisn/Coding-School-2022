@@ -15,18 +15,18 @@ namespace EF_Library.Configurations
         public void Configure(EntityTypeBuilder<Transaction> builder)
         {
             builder.ToTable("Transaction");
-            builder.HasKey(x => x.ID);
-            builder.Property(x => x.ID);
+            builder.HasKey(Transaction => Transaction.ID);
+            builder.Property(Transaction => Transaction.ID);
 
-            builder.Property(x => x.PetFoodQty);
-            builder.Property(x => x.PetFoodPrice);
-            builder.Property(x => x.PetPrice);
-            builder.Property(x => x.TotalPrice);
-            builder.Property(x => x.CustomerID);
-            builder.Property(x => x.EmployeeID);
-            builder.Property(x => x.Date);
-            builder.Property(x => x.PetFoodID);
-            builder.Property(x => x.PetID);
+            builder.Property(Transaction => Transaction.PetFoodQty);
+            builder.Property(Transaction => Transaction.PetFoodPrice);
+            builder.Property(Transaction => Transaction.PetPrice);
+            builder.Property(Transaction => Transaction.TotalPrice);
+            builder.Property(Transaction => Transaction.CustomerID);
+            builder.Property(Transaction => Transaction.EmployeeID);
+            builder.Property(Transaction => Transaction.Date);
+            builder.Property(Transaction => Transaction.PetFoodID);
+            builder.Property(Transaction => Transaction.PetID);
         }
     }
 }
