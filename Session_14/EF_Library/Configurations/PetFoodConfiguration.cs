@@ -18,10 +18,10 @@ namespace EF_Library.Configurations
             builder.HasKey(x => x.ID);
 
             builder.Property(x => x.ID);
-            builder.Property(x => x.Cost).ValueGeneratedOnAdd();
-            builder.Property(x => x.Price).ValueGeneratedOnAdd();
-            builder.Property(x => x.AnimalType).ValueGeneratedOnAdd();
-            builder.HasIndex(x => x.AnimalType).HasName("Pet_AnimalType");
+            builder.Property(x => x.Cost);
+            builder.Property(x => x.Price);
+            builder.Property(x => x.AnimalType);
+            builder.HasIndex(x => x.AnimalType).HasName("PetAnimalType");
         }
     }
 }

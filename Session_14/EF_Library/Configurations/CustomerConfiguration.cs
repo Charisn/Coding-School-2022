@@ -17,10 +17,10 @@ namespace EF_Library.Configurations
             builder.HasKey(x => x.ID);
 
             builder.Property(x => x.ID);
-            builder.Property(x => x.Name).ValueGeneratedOnAdd().HasMaxLength(50);
-            builder.Property(x => x.SurName).ValueGeneratedOnAdd().HasMaxLength(50);
+            builder.Property(x => x.Name).HasMaxLength(50);
+            builder.Property(x => x.SurName).HasMaxLength(50);
             builder.Property(x => x.Phone);
-            builder.Property(x => x.TIN).ValueGeneratedOnAdd();
+            builder.Property(x => x.TIN);
         }
     }
 }

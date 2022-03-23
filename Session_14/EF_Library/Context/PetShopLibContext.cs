@@ -21,11 +21,15 @@ public class PetShopLibContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfiguration(new CustomerConfiguration());
+        modelBuilder.ApplyConfiguration(new EmployeeConfiguration());
+        modelBuilder.ApplyConfiguration(new PetConfiguration());
+        modelBuilder.ApplyConfiguration(new PetFoodConfiguration());
+        modelBuilder.ApplyConfiguration(new TransactionConfiguration());
     }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         base.OnConfiguring(optionsBuilder);
-        var connString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DbPetShop;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        var connString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=New_DbPetShop;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         optionsBuilder.UseSqlServer(connString);
     }
 }
