@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PetShopLib.Impl
+namespace PetShopLib.Impl.Model
 {
-    internal class Manager 
+    internal class CustomerDetail
     {
     }
 }
