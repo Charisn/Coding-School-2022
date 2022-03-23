@@ -16,11 +16,13 @@ namespace EF_Library.Configurations
         {
             builder.ToTable("Pet");
             builder.HasKey(x => x.ID);
+
             builder.Property(x => x.ID);
             builder.Property(x => x.PetStatus).ValueGeneratedOnAdd();
             builder.Property(x => x.Cost).ValueGeneratedOnAdd();
             builder.Property(x => x.Breed).ValueGeneratedOnAdd().HasMaxLength(50);
             builder.Property(x => x.AnimalType).ValueGeneratedOnAdd().HasMaxLength(50);
+            builder.HasIndex(x => x.AnimalType).HasName("Pet_AnimalType");
         }
     }
 }

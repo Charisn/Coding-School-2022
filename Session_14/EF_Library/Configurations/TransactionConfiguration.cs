@@ -17,15 +17,17 @@ namespace EF_Library.Configurations
             builder.ToTable("Transaction");
             builder.HasKey(x => x.ID);
             builder.Property(x => x.ID);
+
             builder.Property(x => x.PetFoodQty).ValueGeneratedOnAdd();
             builder.Property(x => x.PetFoodPrice).ValueGeneratedOnAdd();
             builder.Property(x => x.PetPrice).ValueGeneratedOnAdd();
             builder.Property(x => x.TotalPrice).ValueGeneratedOnAdd();
             builder.Property(x => x.CustomerID);
             builder.Property(x => x.EmployeeID);
-            builder.Property(x => x.Date).ValueGeneratedOnAdd();
+            builder.Property(x => x.Date);
             builder.Property(x => x.PetFoodID);
             builder.Property(x => x.PetID);
+            builder.HasIndex(x => x.Date);
         }
     }
 }

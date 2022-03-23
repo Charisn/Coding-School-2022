@@ -16,12 +16,12 @@ namespace EF_Library.Configurations
         {
             builder.ToTable("Employee");
             builder.HasKey(x => x.ID);
+
             builder.Property(x => x.ID);
             builder.Property(x => x.Name).ValueGeneratedOnAdd().HasMaxLength(50);
             builder.Property(x => x.SurName).ValueGeneratedOnAdd().HasMaxLength(50);
             builder.Property(x => x.SalaryPerMonth).ValueGeneratedOnAdd();
             builder.Property(x => x.EmployeeType).ValueGeneratedOnAdd();
-            builder.Property(x => x.FullName).ValueGeneratedOnAdd().HasMaxLength(101);
         }
     }
 }
