@@ -8,5 +8,9 @@ namespace PetShopLib.Impl.Model;
 
 public abstract class BaseEntity
 {
-    public Guid Id { get; set; }
+    public Guid ID { get; set; }
+    public BaseEntity()
+    {
+        ID = Guid.NewGuid();
+    }
 }
