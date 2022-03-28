@@ -8,7 +8,7 @@ using PetShopLib.Impl;
 
 namespace EF_Library.Repositories;
 
-internal class MockCustomerRepo
+public class MockCustomerRepo : IEntityRepo<Customer>
 {
     private List<Customer> _customer = new List<Customer>() { new Customer(), new Customer() };
 
@@ -18,7 +18,7 @@ internal class MockCustomerRepo
         return Task.CompletedTask;
     }
 
-    public Task Delete(int id)
+    public Task Delete(Guid id)
     {
         var foundEmployee = _customer.SingleOrDefault(x => x.ID.Equals(id));
         if (foundEmployee is null)
@@ -32,12 +32,12 @@ internal class MockCustomerRepo
         return _customer;
     }
 
-    public Customer? GetById(int id)
+    public Customer? GetById(Guid id)
     {
         return _customer.SingleOrDefault(x => x.ID.Equals(id));
     }
 
-    public Task Update(int id, Customer entity)
+    public Task Update(Guid id, Customer entity)
     {
         var foundCustomer = _customer.SingleOrDefault(x => x.ID.Equals(id));
         if (foundCustomer is null)

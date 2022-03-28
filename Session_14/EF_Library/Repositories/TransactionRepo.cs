@@ -8,7 +8,7 @@ using PetShopLib.Impl;
 
 namespace EF_Library.Repositories;
 
-internal class TransactionRepo : IEntityRepo<Transaction>
+public class TransactionRepo : IEntityRepo<Transaction>
 {
     public async Task Create(Transaction entity)
     {

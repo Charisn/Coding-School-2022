@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace EF_Library.Repositories;
 
-internal class CustomerRepo : IEntityRepo<Customer>
+public class CustomerRepo : IEntityRepo<Customer>
 {
     public async Task Create(Customer entity)
     {

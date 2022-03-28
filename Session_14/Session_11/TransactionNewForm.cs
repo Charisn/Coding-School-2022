@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.IO;
 using PetShopLib.Impl;
 using System.Text.Json;
+using EF_Library.Repositories;
 
 namespace Session_11
 {
@@ -21,17 +22,25 @@ namespace Session_11
         private PetShop _petShop;
         private Customer _currentCustomer;
         private Employee _currentEmployee;
+        private IEntityRepo<Customer> _customerRepo;
 
+        private IEntityRepo<Transaction> _transactionRepo;
         public object _transaction { get; internal set; }
 
-        public TransactionNewForm()
+        public TransactionNewForm(IEntityRepo<Transaction> transactionRepo, IEntityRepo<Customer> customerRepo)
         {
-            LoadPetsShopJson();
             InitializeComponent();
+
+            _transactionRepo = transactionRepo;
+            _customerRepo = customerRepo;
+
+            _petShop = new PetShop();
             _petShop.Transactions = new List<Transaction>();
-            _thisTransaction = new Transaction();     
-            //_petShop.Transactions.Add(_thisTransaction);
-            
+            _petShop.Customers = new List<Customer>();
+            _thisTransaction = new Transaction();
+
+            _petShop.Customers = _customerRepo.GetAll();
+            _petShop.Transactions = _transactionRepo.GetAll();
         }
 
         private void TransactionNewForm_Load(object sender, EventArgs e)
@@ -56,7 +65,7 @@ namespace Session_11
 
         private void AddNewCustomer(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            CustomerListForm linkLabel = new CustomerListForm();
+            CustomerListForm linkLabel = new CustomerListForm(_customerRepo);
             linkLabel.Show();
         }
 
@@ -66,6 +75,8 @@ namespace Session_11
             ctrlPetPrice.DataBindings.Add(new Binding("EditValue", bsTransactions, "PetPrice", true));
             ctrlPetFoodQty.DataBindings.Add(new Binding("EditValue", bsTransactions, "PetFoodQty", true));
             ctrlTotalPrice.DataBindings.Add(new Binding("EditValue", bsTransactions, "TotalPrice", true));
+            ctrlCustomer.DataBindings.Add(new Binding("EditValue", bsTransactions, "CustomerID", true));
+            ctrlEmployee.DataBindings.Add(new Binding("EditValue", bsTransactions, "EmployeeID", true));
         }
 
         public void Calculations()
@@ -76,8 +87,8 @@ namespace Session_11
             bsPetShop.DataSource = _petShop;
             bsPetShop.DataMember = "Pets";
             ctrlPet.Properties.DataSource = bsPetShop;
-            var ctrlpet = ctrlPet.EditValue;
-            var pet = _petShop.Pets.Find(x => x.ID.Equals(ctrlpet));
+
+            var pet = _petShop.Pets.Find(x => x.ID.Equals(ctrlPet.EditValue));
             var animalType = pet.AnimalType;
             var petFood = _petShop.PetFoods.Find(x => x.AnimalType.Equals(animalType));
             decimal _currentFoodPrice = Convert.ToDecimal(petFood.Price);
@@ -99,8 +110,8 @@ namespace Session_11
                 MessageBox.Show("Pet selected is unavailable", "Warning");
             }
 
-            _currentCustomer = _petShop.Customers.FirstOrDefault(x => x.TIN.Equals(ctrlCustomer.EditValue));
-            _currentEmployee = _petShop.Employees.FirstOrDefault(x => x.Name.Equals(ctrlEmployee.EditValue));
+            _currentCustomer = _petShop.Customers.FirstOrDefault(x => x.ID.Equals(ctrlCustomer.EditValue));
+            _currentEmployee = _petShop.Employees.FirstOrDefault(x => x.ID.Equals(ctrlEmployee.EditValue));
             _thisTransaction.PetFoodQty = _qty;
             _thisTransaction.PetFoodPrice = _currentFoodPrice;
             _thisTransaction.TotalPrice = _grandTotal;
@@ -118,10 +129,8 @@ namespace Session_11
         }
         private void btnSaveNewTrans_Click(object sender, EventArgs e)
         {
-            var list = new List<Transaction>();
-            list.Add(new Transaction());
+            _transactionRepo.Create(_thisTransaction);
             this.Close();
-            //Save();
         }
         private void ctrlPet_EditValueChanged(object sender, EventArgs e)
         {
@@ -139,11 +148,6 @@ namespace Session_11
         private void ctrlPetFoodQty_EditValueChanged(object sender, EventArgs e)
         {
             Calculations();
-        }        
-        private void LoadPetsShopJson()
-        {
-            string s = File.ReadAllText(FILE_NAME);
-            _petShop = (PetShop)JsonSerializer.Deserialize(s, typeof(PetShop));
         }
         private void ctrlCustomer_ButtonPressed(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {

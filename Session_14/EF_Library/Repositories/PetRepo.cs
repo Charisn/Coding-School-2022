@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EF_Library.Repositories;
 
-internal class PetRepo : IEntityRepo<Pet>
+public class PetRepo : IEntityRepo<Pet>
 {
     public async Task Create(Pet entity)
     {

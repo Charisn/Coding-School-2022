@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EF_Library.Repositories;
 
-internal class MockPetFoodRepo
+internal class MockPetFoodRepo : IEntityRepo<PetFood>
 {
     private List<PetFood> _petFoods = new List<PetFood>() { new PetFood(), new PetFood() };
 
@@ -17,7 +17,7 @@ internal class MockPetFoodRepo
         return Task.CompletedTask;
     }
 
-    public Task Delete(int id)
+    public Task Delete(Guid id)
     {
         var foundPetFood = _petFoods.SingleOrDefault(x => x.ID.Equals(id));
         if (foundPetFood is null)
@@ -31,12 +31,12 @@ internal class MockPetFoodRepo
         return _petFoods;
     }
 
-    public PetFood? GetById(int id)
+    public PetFood? GetById(Guid id)
     {
         return _petFoods.SingleOrDefault(x => x.ID.Equals(id));
     }
 
-    public Task Update(int id, PetFood entity)
+    public Task Update(Guid id, PetFood entity)
     {
         var foundPetFood = _petFoods.SingleOrDefault(x => x.ID.Equals(id));
         if (foundPetFood is null)

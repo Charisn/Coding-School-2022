@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EF_Library.Repositories;
 
-internal class MockupPetRepo
+internal class MockupPetRepo : IEntityRepo<Pet>
 {
     private List<Pet> _pet = new List<Pet>() { new Pet(), new Pet() };
 
@@ -17,7 +17,7 @@ internal class MockupPetRepo
         return Task.CompletedTask;
     }
 
-    public Task Delete(int id)
+    public Task Delete(Guid id)
     {
         var foundPet = _pet.SingleOrDefault(x => x.ID.Equals(id));
         if (foundPet is null)
@@ -31,12 +31,12 @@ internal class MockupPetRepo
         return _pet;
     }
 
-    public Pet? GetById(int id)
+    public Pet? GetById(Guid id)
     {
         return _pet.SingleOrDefault(x => x.ID.Equals(id));
     }
 
-    public Task Update(int id, Pet entity)
+    public Task Update(Guid id, Pet entity)
     {
         var foundPet = _pet.SingleOrDefault(x => x.ID.Equals(id));
         if (foundPet is null)

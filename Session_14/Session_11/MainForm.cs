@@ -3,6 +3,7 @@ using System.IO;
 using System.Text.Json;
 using PetShopLib.Impl;
 using PetShopLib.Enums;
+using EF_Library.Repositories;
 
 namespace Session_11
 {
@@ -11,11 +12,14 @@ namespace Session_11
     {
         private const string FILE_NAME = "PetShop.json";
         private PetShop _petShop;
+        private readonly IEntityRepo<Customer> _customerRepo;
+        private readonly IEntityRepo<Transaction> _transactionRepo;
 
-        public MainForm()
+        public MainForm(IEntityRepo<Customer> customerRepo, IEntityRepo<Transaction> transactionRepo)
         {
             InitializeComponent();
-
+            _customerRepo = customerRepo;
+            _transactionRepo = transactionRepo;
         }
 
         private void Menu_PetClick(object sender, EventArgs e)
@@ -108,7 +112,7 @@ namespace Session_11
 
         private void MenuStripCustomer(object sender, EventArgs e)
         {
-            CustomerListForm form = new CustomerListForm();
+            CustomerListForm form = new CustomerListForm(_customerRepo);
             form.Show();
         }
 
@@ -138,7 +142,7 @@ namespace Session_11
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
-            TransactionNewForm transactionForm = new TransactionNewForm();
+            TransactionNewForm transactionForm = new TransactionNewForm(_transactionRepo, _customerRepo);
             transactionForm.ShowDialog();
         }
 

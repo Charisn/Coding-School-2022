@@ -31,7 +31,7 @@ namespace Session_11
             lookup.DataSource = petShop.Customers;
             lookup.Columns.Add(new LookUpColumnInfo("Name", "Name"));
             lookup.DisplayMember = "Name";
-            lookup.ValueMember = "TIN";
+            lookup.ValueMember = "ID";
             lookup.NullText = "Choose a Customer";
         }
         public void PopulateEmployee(RepositoryItemLookUpEdit lookup, PetShop petShop)
@@ -39,7 +39,7 @@ namespace Session_11
             lookup.DataSource = petShop.Employees;
             lookup.Columns.Add(new LookUpColumnInfo("Name", "Name"));
             lookup.DisplayMember = "Name";
-            lookup.ValueMember = "Name";
+            lookup.ValueMember = "ID";
             lookup.NullText = "Choose an Employee";
         }
     }

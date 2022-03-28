@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using EF_Library.Repositories;
 using PetShopLib.Impl;
 using System;
 using System.Collections.Generic;
@@ -17,22 +18,25 @@ namespace Session_11
     public partial class CustomerForm : DevExpress.XtraEditors.XtraForm
     {
         private const string FILE_NAME = "PetShop.json";
-        
-        
+
         private PetShop _petShop;
         private Customer _customer;
         private Customer _originalcustomer = new Customer();
+
+        private readonly IEntityRepo<Customer> _customerRepo;
+
         public CustomerForm()
         {
             InitializeComponent();
             
         }
-        public CustomerForm(PetShop petShop)
+        public CustomerForm(PetShop petShop, IEntityRepo<Customer> customerRepo)
         {
             InitializeComponent();
             _petShop = petShop;
+            _customerRepo = customerRepo;
         }
-        public CustomerForm(PetShop petShop, Customer customer):this(petShop)
+        public CustomerForm(PetShop petShop,IEntityRepo<Customer> customerRepo ,Customer customer):this(petShop, customerRepo)
         {            
             _customer = customer;
         }
@@ -46,6 +50,7 @@ namespace Session_11
             }
             bsCustomers.DataSource = _customer;
             SetDataBindings();
+            
         }
 
         private void SetDataBindings()
@@ -58,8 +63,7 @@ namespace Session_11
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            string json = JsonSerializer.Serialize(_petShop);
-            File.WriteAllText(FILE_NAME, json);
+            _customerRepo.Create(_customer);
             DialogResult = DialogResult.OK;
         }
 
@@ -67,11 +71,6 @@ namespace Session_11
         {
             _petShop.Customers.Remove(_customer);
             this.Close();
-        }
-
-        private void ctrlFullname_EditValueChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
