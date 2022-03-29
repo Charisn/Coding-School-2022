@@ -20,8 +20,8 @@ namespace Session_11
         private const string FILE_NAME = "PetShop.json";
         private Transaction _thisTransaction;
         private PetShop _petShop;
-        private Customer _currentCustomer;
-        private Employee _currentEmployee;
+        private Customer? _currentCustomer;
+        private Employee? _currentEmployee;
         private IEntityRepo<Customer> _customerRepo;
 
         private IEntityRepo<Transaction> _transactionRepo;
@@ -108,6 +108,7 @@ namespace Session_11
             if (pet.PetStatus == PetShopLib.Enums.PetStatusEnum.Unhealthy)
             {
                 MessageBox.Show("Pet selected is unavailable", "Warning");
+                ctrlPet.EditValue = null;
             }
 
             _currentCustomer = _petShop.Customers.FirstOrDefault(x => x.ID.Equals(ctrlCustomer.EditValue));

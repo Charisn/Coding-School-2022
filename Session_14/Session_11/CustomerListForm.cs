@@ -61,7 +61,7 @@ namespace Session_11
             var petShop = bsPetShop.Current as PetShop;
             CustomerForm customerForm = new CustomerForm(petShop, _customerRepo);
             customerForm.ShowDialog();
-            grvCustomers.RefreshData();
+            RefreshCustomers();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -70,7 +70,7 @@ namespace Session_11
             var customer = bsCustomers.Current as Customer;
             CustomerForm customForm = new CustomerForm(petShop, _customerRepo, customer);
             customForm.ShowDialog();
-            grvCustomers.RefreshData();
+            RefreshCustomers();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
