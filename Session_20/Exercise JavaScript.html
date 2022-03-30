@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+</html>
+
+<head>
+        
+</head>
+
+<body>
+    <div>
+        <h2> Question 1</h2>
+        <table>
+            <tr>
+                <td><label for="txtName">Name</label></td>
+                <td><input id="txtName"></td>
+            </tr>
+            <tr>
+                <td><label for="txtReversedName">Reversed Name</label></td>
+                <td><input id="txtReversedName"></td>
+            </tr>            
+        </table>
+    </div>
+
+    <div>        
+        <input type="button" onclick="Reverser()" value="Reverse Name" />        
+    </div>
+    <h2>Question 2 -> CheckIfPalindrome()</h2>
+    <br>
+
+        <h2> Question 3</h2>
+    <div class="main-container"style="display: flex; flex: 1 1 auto">
+        <form id="formMain">
+            <input id="txtSelectedId" type="hidden">
+            <table>
+                <tr>
+                    <td><label for="txtCustomerName">Name</label></td>
+                    <td><input id="txtCustomerName"></td>
+                </tr>
+                <tr>
+                    <td><label for="txtCustomerSurName">SurName</label></td>
+                    <td><input id="txtCustomerSurName"></td>
+                </tr>
+                <tr>
+                    <td><label for="txtCustomerAge">Age</label></td>
+                    <td><input id="txtCustomerAge"></td>
+                </tr>
+                <tr>
+                    <td><label for="txtCustomerGender">Gender</label></td>
+                    <td><input id="txtCustomerGender"></td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <button id="btnAddCustomer" type="button" onclick="addCustomerToList()">Add Customer</button>
+                        <button id="btnNew" type="button" onclick="addNew()">New Customer</button>
+                        <button id="btnRemoveFromList" type="button" onclick="removeFromList()">Remove Customer</button>
+                        <ul id="CusList"></ul>
+                    </td>                    
+            </table>
+        </form>
+    </div>
+
+    <h2> Question 4 -> multiply()</h2>
+    <h2> Question 5->incrementString() </h2>
+
+<script type="text/javascript">
+
+    function Reverser() 
+    {
+        var name = document.getElementById("txtName").value;
+        var ReversedName = "";
+        for (var i = name.length - 1; i >= 0; i--) 
+        { 
+            ReversedName += name[i];
+        }
+        document.getElementById("txtReversedName").value = ReversedName;
+    }
+//----------------------------------------------------------------------------------------
+//Question 2
+    function CheckIfPalindrome(str){
+        str = str.toLowerCase().split(" ").join("");
+        let len = str.length;
+        for(let i=0; i <len/2; i++){
+            if(str[i] !== str[len - 1 - i]){
+                return false;
+            }            
+        }
+        return true;        
+    }
+//----------------------------------------------------------------------------------------
+//Question 3
+var CustomersList = [];
+var LId = 0;
+
+function addCustomerToList(){
+    var CustomerName = document.getElementById("txtCustomerName").value;
+    var CustomerSurName = document.getElementById("txtCustomerSurName").value;
+    var CustomerAge = document.getElementById("txtCustomerAge").value;
+    var CustomerGender = document.getElementById("txtCustomerGender").value;
+
+    var selectedId = +document.getElementById("txtSelectedId").value;
+    if (selectedId){
+        for (var i=0; i<CustomersList.length; i++){
+            var current = CustomersList[i];
+            if(current.id !== selectedId)
+                continue;
+
+            current.CustomerName = CustomerName;
+            current.CustomerSurName = CustomerSurName;
+            current.CustomerAge = CustomerAge;
+            current.CustomerGender = CustomerGender;
+            break;
+        }
+    } else{
+        LId += 1;
+        CustomersList.push({id: LId, CustomerName, CustomerSurName, CustomerAge, CustomerGender });
+    }
+    redrawList();
+}
+
+function redrawList() {
+
+    var CusList = document.getElementById("CusList");
+
+    CusList.innerHTML = "";
+
+    for (var i = 0; i < CustomersList.length; i++) {
+
+        var currCusList = CustomersList[i];
+        var customer = document.createElement("th");
+        customer.appendChild(document.createTextNode(currCusList.CustomerName));
+        customer.setAttribute('data-id', currCusList.id);
+        customer.addEventListener('click', (event) => {
+            loadSelectedItem(event);
+        });
+
+        CusList.appendChild(customer);
+    }
+}
+function loadSelectedItem(e) {
+    var selectedId = +e.target.dataset.id;
+
+    var selectedItem = findItemById(selectedId);
+    var customer1= [];
+    removePreviousSelection();
+    e.target.classList.add('selected');
+
+    document.getElementById("txtCustomerName").value = selectedItem.CustomerName;
+    document.getElementById("txtCustomerSurName").value = selectedItem.CustomerSurName;
+    document.getElementById("txtCustomerAge").value = selectedItem.CustomerAge;
+    document.getElementById("txtCustomerGender").value = selectedItem.CustomerGender;
+    document.getElementById("txtSelectedId").value = selectedItem.id;
+}
+
+function removePreviousSelection(){
+    var selection = document.getElementsByClassName("selected");
+    for(var element of selection)
+    {
+        element.classList.remove('selected');
+    }
+}
+
+function addNew() {
+    document.getElementById('formMain').reset();
+    document.getElementById('txtSelectedId').value = null;
+}
+
+function removeFromList(){
+    var selectedId = +document.getElementById("txtSelectedId").value;
+    var foundIndex = CustomersList.findIndex( c=> c.id === selectedId);
+
+    if(foundIndex === -1)
+        return;
+
+    CustomersList.splice(foundIndex, 1);
+    redrawList();
+    
+}
+
+function findItemById(id) {
+    return CustomersList.find(c => c.id === id);
+}
+
+//----------------------------------------------------------------------------------------
+//Question 4
+function multiply(a,b){
+    return a * b;
+}
+
+//----------------------------------------------------------------------------------------
+//Question 5
+
+function incrementString(input) {
+    var splits = input.split(/(\d+)$/),
+    num = 1;
+    if (splits[1] !== undefined) num = parseInt(splits[1]) + 1;
+    return splits[0] + num;
+}
+
+
+</script>
+    
