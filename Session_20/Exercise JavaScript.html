@@ -54,8 +54,20 @@
                         <button id="btnNew" type="button" onclick="addNew()">New Customer</button>
                         <button id="btnRemoveFromList" type="button" onclick="removeFromList()">Remove Customer</button>
                         <ul id="CusList"></ul>
-                    </td>                    
+                    </td>
+                </tr>                        
             </table>
+            <td><label for="lblCustomerName"></label></td>
+            <td><input id="lblCustomerName"></td><br>
+
+            <td><label for="lblCustomerSurname"></label></td>
+            <td><input id="lblCustomerSurname"></td><br>
+
+            <td><label for="lblCustomerAge"></label></td>
+            <td><input id="lblCustomerAge"></td><br>
+
+            <td><label for="lblCustomerGender"></label></td>
+            <td><input id="lblCustomerGender"></td><br>
         </form>
     </div>
 
@@ -144,10 +156,10 @@ function loadSelectedItem(e) {
     removePreviousSelection();
     e.target.classList.add('selected');
 
-    document.getElementById("txtCustomerName").value = selectedItem.CustomerName;
-    document.getElementById("txtCustomerSurName").value = selectedItem.CustomerSurName;
-    document.getElementById("txtCustomerAge").value = selectedItem.CustomerAge;
-    document.getElementById("txtCustomerGender").value = selectedItem.CustomerGender;
+    document.getElementById("lblCustomerName").value = selectedItem.CustomerName;
+    document.getElementById("lblCustomerSurName").value = selectedItem.CustomerSurName;
+    document.getElementById("txtCustomerAge1").value = selectedItem.CustomerAge;
+    document.getElementById("lblCustomerGender").value = selectedItem.CustomerGender;
     document.getElementById("txtSelectedId").value = selectedItem.id;
 }
 
